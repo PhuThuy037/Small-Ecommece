@@ -1,0 +1,38 @@
+services:
+  db:
+    container_name: small_ecomerce
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_DB: small_ecommerce
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - spring-boot
+
+  pgadmin:
+    container_name: pg-admin
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    environment:
+        PGADMIN_DEFAULT_EMAIL: admin@email.com
+        PGADMIN_DEFAULT_PASSWORD: root
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "5055:80"
+    networks:
+      - spring-boot
+
+volumes:
+  postgresql_data:
+  pgadmin_data:
+
+networks:
+  spring-boot:
+    driver: bridge
