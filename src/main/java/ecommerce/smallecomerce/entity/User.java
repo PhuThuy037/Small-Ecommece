@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class User {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,4 +46,6 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<OrderItem> orderItems;
+
+
 }

@@ -28,4 +28,8 @@ public class OrderItem {
 
     @Column(name = "created_at")
     private final LocalDateTime createdAt = LocalDateTime.now();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
 }

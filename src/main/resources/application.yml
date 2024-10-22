@@ -13,3 +13,5 @@ spring:
 logging:
   level:
     org.springframework.security: trace
+
+secert.jwt.string : E978AF5875411FD33FE319AF8EB22
